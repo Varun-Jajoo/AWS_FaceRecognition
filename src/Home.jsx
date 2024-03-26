@@ -73,33 +73,22 @@ function Home() {
   
   
   return (
-    <div className="flex flex-col h-screen">
-      <header className="p-4">
+    <div className="flex flex-col h-screen" >
+      <header className="p-4 flex justify-between">
         <div className="flex items-center space-x-4">
           <a className="flex items-center space-x-2" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
               <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
               <circle cx="12" cy="13" r="3"></circle>
             </svg>
-            <span className="text-lg font-bold">Varun OP</span>
+            <span className="text-lg font-bold">Face Recognition System</span>
           </a>
-          <button onClick={handleTakePhoto} className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3">
-            Take Photo
-          </button>
-          <label htmlFor="upload" className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3">
-            Upload Photo
-          </label>
-          <input type="file"
-                 accept="image/*"
-                 onChange={(event) => handleImageUpload(event.target.files[0])}
-                 id='upload'
-                 className="hidden" />
         </div>
       </header>
-      <main className="flex-1 overflow-y-auto">
-        <div className="flex justify-center items-center h-[60vh]">
+      <main className="flex flex-col justify-center items-center gap-[40px] h-full">
+        <div className="flex justify-center items-center">
           <div className="w-[400px]">
-            <div className="border border-dashed border-gray-200 dark:border-gray-800 rounded-lg w-full h-[300px] flex items-center justify-center " style={{objectFit: 'cover'}}>
+            <div className="border border-dashed border-black dark:border-gray-800 rounded-lg w-full h-[200px] flex items-center justify-center relative shadow-lg bg-gray-100 dark:bg-gray-800" style={{objectFit: 'cover'}}>
               {uploadedImage ? (
                 <img src={uploadedImage} alt="Uploaded" className="max-h-full max-w-full" />
               ) : (
@@ -112,7 +101,7 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="text-center space-y-2 p-4">
+        <div className="text-center p-0.5">
           {errorMessage ? (
             <React.Fragment>
               <h1 className="text-3xl font-bold text-red-500">Error</h1>
@@ -125,11 +114,24 @@ function Home() {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              <h1 className="text-3xl font-bold">No face detected</h1>
-              <p className="text-gray-500 dark:text-gray-400">Try uploading another photo</p>
+              <h1 className="text-3xl font-bold">Welcome!</h1>
+              <p className="text-gray-500 dark:text-gray-400">Upload a picture</p>
             </React.Fragment>
           )}
         </div>
+        <div className="flex justify-center items-center gap-[60px] mt-3 ">
+            <button onClick={handleTakePhoto} className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50  border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3 hover:shadow-md space-x-4 rounded-[10px] border-[3px]">
+              Take Photo
+            </button>
+            <label htmlFor="upload" className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-[10px] px-3 hover:shadow-md cursor-pointer border-[3px]">
+              Upload Photo
+            </label>
+            <input type="file"
+                   accept="image/*"
+                   onChange={(event) => handleImageUpload(event.target.files[0])}
+                   id='upload'
+                   className="hidden" />
+          </div>
       </main>
       
     </div>
